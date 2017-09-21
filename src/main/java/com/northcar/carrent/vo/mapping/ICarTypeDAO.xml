@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.northcar.carrent.dao.ICarTypeDAO">
+	<select id="findAll"  resultType="com.northcar.carrent.vo.CarType">
+		SELECT id,carType
+		FROM carType 	
+	</select>
+	<update id="doUpdate" parameterType="com.northcar.carrent.vo.CarType">
+		update carType set carType=#{carType} where id=#{id} 
+	</update>
+	<insert id="doCreate" parameterType="com.northcar.carrent.vo.CarType">
+		insert into carType(carType) values(#{carType}) 
+	</insert>
+	<delete id="doRemove" parameterType="com.northcar.carrent.vo.CarType">
+		delete from carType where id=#{id} 
+	</delete>
+</mapper>

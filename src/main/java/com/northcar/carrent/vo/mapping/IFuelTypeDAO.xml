@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.northcar.carrent.dao.IFuelTypeDAO">
+	<select id="findAll"  resultType="com.northcar.carrent.vo.FuelType">
+		SELECT id,fuel
+		FROM fuelType 	
+	</select>
+	<update id="doUpdate" parameterType="com.northcar.carrent.vo.FuelType">
+		update fuelType set fuel=#{fuel} where id=#{id} 
+	</update>
+	<insert id="doCreate" parameterType="com.northcar.carrent.vo.FuelType">
+		insert into fuelType(fuel) values(#{fuel}) 
+	</insert>
+	<delete id="doRemove" parameterType="com.northcar.carrent.vo.FuelType">
+		delete from fuelType where id=#{id} 
+	</delete>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.northcar.carrent.dao.carManage.ICarInfoDAO">
+	<select id="findAll"  resultType="com.northcar.carrent.vo.carManage.CarInfo">
+		SELECT carid as carId,plateNo,engineNo,carType,carJiaNo,color,carOwner,carBelong,
+		fuelType,status,buyDate,seller,carMoney,buyTax,allMoney,zheJiuMonth,zheJiuFeePerMon,
+		isDeal,nextYancheDate,memo,zheJiuPercent
+		FROM carinfo 	
+	</select>
+	<select id="findById"  resultType="com.northcar.carrent.vo.carManage.CarInfo">
+		SELECT carid as carId,plateNo,engineNo,carType,carJiaNo,color,carOwner,carBelong,
+		fuelType,status,buyDate,seller,carMoney,buyTax,allMoney,zheJiuMonth,zheJiuFeePerMon,
+		isDeal,nextYancheDate,memo,zheJiuPercent
+		FROM carinfo 
+		WHERE carid=#{carId,jdbcType=SMALLINT}	
+	</select>
+	<update id="doUpdate" parameterType="com.northcar.carrent.vo.carManage.CarInfo">
+		update carInfo  set 
+		plateNo=#{plateNo,jdbcType=VARCHAR},
+		engineNo=#{engineNo,jdbcType=VARCHAR},
+		carType=#{carType,jdbcType=VARCHAR},
+		carJiaNo=#{carJiaNo,jdbcType=VARCHAR},
+		color=#{color,jdbcType=VARCHAR},
+		carOwner=#{carOwner,jdbcType=VARCHAR},
+		carBelong=#{carBelong,jdbcType=VARCHAR},
+		fuelType=#{fuelType,jdbcType=VARCHAR},
+		buyDate=#{buyDate,jdbcType=DATE},
+		seller=#{seller,jdbcType=VARCHAR},
+		carMoney=#{carMoney,jdbcType=DECIMAL},
+		buyTax=#{buyTax,jdbcType=DECIMAL},
+		allMoney=#{allMoney,jdbcType=DECIMAL},
+		zheJiuMonth=#{zheJiuMonth,jdbcType=	SMALLINT},
+		zheJiuFeePerMon=#{zheJiuFeePerMon,jdbcType=	DECIMAL},
+		nextYancheDate=#{nextYancheDate,jdbcType=DATE},
+		zheJiuPercent=#{zheJiuPercent,jdbcType=FLOAT},
+		memo=#{memo,jdbcType=VARCHAR}
+		where  carid=#{carId,jdbcType=SMALLINT} 
+	</update>
+	<insert id="doCreate" parameterType="com.northcar.carrent.vo.carManage.CarInfo">
+		insert into carInfo(plateNo,engineNo,carType,carJiaNo,color,carOwner,carBelong,
+		fuelType,buyDate,seller,carMoney,buyTax,allMoney,zheJiuMonth,zheJiuFeePerMon,
+		nextYancheDate,zheJiuPercent,memo ) 
+		values(
+		#{plateNo,jdbcType=VARCHAR},
+		#{engineNo,jdbcType=VARCHAR},
+		#{carType,jdbcType=VARCHAR},
+		#{carJiaNo,jdbcType=VARCHAR},
+		#{color,jdbcType=VARCHAR},
+		#{carOwner,jdbcType=VARCHAR},
+		#{carBelong,jdbcType=VARCHAR},
+		#{fuelType,jdbcType=VARCHAR},
+		#{buyDate,jdbcType=DATE},
+		#{seller,jdbcType=VARCHAR},
+		#{carMoney,jdbcType=DECIMAL},
+		#{buyTax,jdbcType=DECIMAL},
+		#{allMoney,jdbcType=DECIMAL},
+		#{zheJiuMonth,jdbcType=SMALLINT},
+		#{zheJiuFeePerMon,jdbcType=DECIMAL},
+		#{nextYancheDate,jdbcType=DATE},
+		#{zheJiuPercent,jdbcType=FLOAT}, 
+		#{memo,jdbcType=VARCHAR} 
+		) 
+	</insert>
+	<delete id="doRemove" parameterType="com.northcar.carrent.vo.carManage.CarInfo">
+		delete from carInfo where  carid=#{carId,jdbcType=SMALLINT} 
+	</delete> 
+</mapper>
